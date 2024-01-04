@@ -10,6 +10,10 @@ class Deals(object):
         url = "deals"
         return self._client._get(self._client.BASE_URL + url, params=params, **kwargs)
 
+    def iter_all_deals(self, start=0, params=None, **kwargs):
+        url = "deals?start={}&limit=500".format(start)
+        return self._client._get(self._client.BASE_URL + url, params=params, **kwargs)
+
     def get_all_deals_with_filter(self, filter_id, params=None, **kwargs):
         url = "deals?filter_id={}".format(filter_id)
         return self._client._get(self._client.BASE_URL + url, params=params, **kwargs)
